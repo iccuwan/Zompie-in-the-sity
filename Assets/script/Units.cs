@@ -7,6 +7,7 @@ public class Units : MonoBehaviour
     public float HP;
     public float MoveSpeed;
     public float Damage;
+    public bool enemy;
 
     void Update()
     {
