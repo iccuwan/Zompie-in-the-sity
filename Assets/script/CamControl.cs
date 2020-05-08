@@ -10,25 +10,33 @@ public class CamControl : MonoBehaviour
     public float scrollSpeed = 2f; // скорость колесика мыши
     public float minSize = 1f;
     public float maxSize = 20f;
+    public float shiftSpeedMultiply = 2f;
+
     void Update()
     {
         Vector3 pos = transform.position;
+        float speed = panSpeed;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed *= shiftSpeedMultiply;
+        }
 
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
-            pos.y += panSpeed * Time.deltaTime;
+            pos.y += speed * Time.deltaTime;
         }
         if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness )
         {
-            pos.y -= panSpeed * Time.deltaTime;
+            pos.y -= speed * Time.deltaTime;
         }
         if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
         {
-            pos.x += panSpeed * Time.deltaTime;
+            pos.x += speed * Time.deltaTime;
         }
         if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
         {
-            pos.x -= panSpeed * Time.deltaTime;
+            pos.x -= speed * Time.deltaTime;
         }
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");

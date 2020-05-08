@@ -155,9 +155,10 @@ MonoBehaviour:
   panSpeed: 20
   panBorderThickness: 10
   panLimit: {x: 20, y: 30}
-  scrollSpeed: 2
+  scrollSpeed: 20
   minSize: 2
   maxSize: 10
+  shiftSpeedMultiply: 2
 --- !u!81 &1515043398
 AudioListener:
   m_ObjectHideFlags: 0
