@@ -6,11 +6,17 @@ public class Unit : MonoBehaviour
 {
     public float HP;
     public float MoveSpeed;
-    public float Damage;
     public bool Enemy;
 
     void Update()
     {
         
+    }
+    
+
+    public enum UnitType
+    {
+        Spec,
+        Zombie
     }
 }
