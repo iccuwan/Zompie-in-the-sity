@@ -12,14 +12,21 @@ public class Spec : Unit
     public readonly UnitType unitType = UnitType.Spec;
     public SpecType specType = SpecType.Assault;
 
+
     void Awake()
     {
         GameManager.Instance.SpecList.Add(this);
+        lookAtDeg = transform.rotation.eulerAngles.z;
+        goTo = transform.position;
     }
 
     void Update()
     {
-       
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, lookAtDeg), rotationSpeed * Time.deltaTime);
+        if (goTo != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, goTo, moveSpeed * Time.deltaTime);
+        }
     }
 
     private void Shoot()

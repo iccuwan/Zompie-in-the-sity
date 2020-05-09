@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    public float HP;
-    public float MoveSpeed;
-    public bool Enemy;
+    public float hp;
+    public float moveSpeed;
+    public float rotationSpeed;
+    public bool enemy;
 
-    void Update()
+    [HideInInspector]
+    public float lookAtDeg = 0f;
+    [HideInInspector]
+    public Vector2 goTo;
+
+    public void Move(Vector2 destination)
     {
-        
+        float angleRad = Mathf.Atan2(destination.y - transform.position.y, destination.x - transform.position.x);
+        lookAtDeg = (180 / Mathf.PI) * angleRad;
+        goTo = destination;
     }
     
 

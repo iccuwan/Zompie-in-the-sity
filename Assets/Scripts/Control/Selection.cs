@@ -9,12 +9,6 @@ public class Selection : MonoBehaviour
     private List<Spec> selectionList = new List<Spec>();
     private Vector2 startPos;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +25,15 @@ public class Selection : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             UpdateSelectionBox(Input.mousePosition);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector2 lookAt = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            foreach (Spec spec in selectionList)
+            {
+                spec.Move(lookAt);
+            }
         }
     }
 
@@ -57,7 +60,7 @@ public class Selection : MonoBehaviour
 
         foreach (Spec spec in GameManager.Instance.SpecList)
         {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(spec.transform.position);
+            Vector2 screenPos = Camera.main.WorldToScreenPoint(spec.transform.position);
 
             if (screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
             {
