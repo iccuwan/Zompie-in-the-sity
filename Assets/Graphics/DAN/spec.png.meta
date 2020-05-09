@@ -23,6 +23,15 @@ TextureImporter:
   - first:
       213: 553023120453449331
     second: bullet1
+  - first:
+      213: -2082830378313601152
+    second: spec_7
+  - first:
+      213: -7734857361177375749
+    second: spec_5
+  - first:
+      213: 4625533025960517159
+    second: spec_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -195,10 +204,10 @@ TextureImporter:
       name: Shoot
       rect:
         serializedVersion: 2
-        x: 68
-        y: 6
-        width: 10
-        height: 11
+        x: 67
+        y: 7
+        width: 11
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,43 +222,43 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullet
+      name: spec_5
       rect:
         serializedVersion: 2
-        x: 87
-        y: 11
-        width: 3
-        height: 1
+        x: 88
+        y: 10
+        width: 1
+        height: 3
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab46fecfa77e53710800000000000000
-      internalID: 1672497352053580986
+      spriteID: bfb05b6063448a490800000000000000
+      internalID: -7734857361177375749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bullet1
+      name: spec_6
       rect:
         serializedVersion: 2
         x: 98
-        y: 11
-        width: 4
-        height: 2
+        y: 10
+        width: 3
+        height: 4
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 376b437199bbca700800000000000000
-      internalID: 553023120453449331
+      spriteID: 72ed63da7c1313040800000000000000
+      internalID: 4625533025960517159
       vertices: []
       indices: 
       edges: []
