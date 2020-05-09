@@ -13,6 +13,7 @@ public class Spec : Unit
     private float fireRate_check = 0f; // проверка для скорострельности
     public readonly UnitType unitType = UnitType.Spec;
     public SpecType specType = SpecType.Assault;
+    public Rigidbody2D SpecRb;
 
 
     void Awake()
@@ -27,8 +28,6 @@ public class Spec : Unit
        if (fireRate_check < fireRate) // скорострельность
        {
            fireRate_check += Time.deltaTime;
-           Debug.Log(fireRate_check);
-           Debug.Log(fireRate);
        }
        
        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, lookAtDeg), rotationSpeed * Time.deltaTime);
@@ -49,28 +48,21 @@ public class Spec : Unit
             rb.AddForce(firePointTransform.up * bulletForce, ForceMode2D.Impulse); // сложная математическая магия заставляющая пулю летать
             Destroy(bullet, 1f);
             Destroy(fire, 0.1f);
-            Debug.Log("Время пострелять");
         }
     }
 
     void OnTriggerStay2D(Collider2D Check_col)
     {
-        Debug.Log("что то в тригере");
         if (Check_col.tag == "Zombie")
         {
+
             Shoot();
-            Debug.Log("зомби найден");
+            Vector3 direction = Check_col.gameObject.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            SpecRb.rotation = angle;
         }
     }
-    /* план Б
-    private void OnTriggerExit(Collider Check_coli)
-    {
-        if (Check_coli.tag == "bullet")
-        {
-            Destroy(Check_coli);
-        }
-    }
-    */
+  
     public enum SpecType
     {
         Assault,

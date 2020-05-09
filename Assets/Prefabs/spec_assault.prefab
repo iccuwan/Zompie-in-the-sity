@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1440598089043846453}
   - component: {fileID: 1440598089043846452}
   - component: {fileID: 1440598089043846458}
+  - component: {fileID: 1020953756552815288}
   m_Layer: 0
   m_Name: spec_assault
   m_TagString: Spec
@@ -170,12 +171,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ca8f69afe2b624db949ac94b825fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
-  MoveSpeed: 0
-  Enemy: 0
-  firePointTransform: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  firePrefab: {fileID: 0}
+  hp: 10
+  moveSpeed: 2
+  rotationSpeed: 700
+  enemy: 0
+  lookAtDeg: 0
+  goTo: {x: 0, y: 0}
+  firePointTransform: {fileID: 1440598088982619243}
+  bulletPrefab: {fileID: 2199023587506525413, guid: f9899330c244d38408b4f50a119442c6,
+    type: 3}
+  firePrefab: {fileID: 2248679516597194447, guid: cfd4babffe14a374188c7aa6b0e31b95,
+    type: 3}
   bulletForce: 20
   bulletDamage: 1
+  fireRate: 0.5
   specType: 0
+  SpecRb: {fileID: 1020953756552815288}
+--- !u!50 &1020953756552815288
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440598089043846457}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
