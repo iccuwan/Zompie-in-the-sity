@@ -13,9 +13,12 @@ public class Unit : MonoBehaviour
     public float lookAtDeg = 0f;
     [HideInInspector]
     public Vector2 goTo;
+    [HideInInspector]
+    public UnitStatus unitStatus = UnitStatus.Idle;
 
     public void Move(Vector2 destination)
     {
+        unitStatus = UnitStatus.Walking;
         float angleRad = Mathf.Atan2(destination.y - transform.position.y, destination.x - transform.position.x);
         lookAtDeg = (180 / Mathf.PI) * angleRad;
         goTo = destination;
@@ -26,5 +29,12 @@ public class Unit : MonoBehaviour
     {
         Spec,
         Zombie
+    }
+
+    public enum UnitStatus
+    {
+        Idle,
+        Walking,
+        Attacking
     }
 }
