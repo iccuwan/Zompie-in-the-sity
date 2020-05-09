@@ -10,7 +10,7 @@ public class Spec : Unit
     public float bulletForce = 20f; // cкорость пули
     public float bulletDamage = 1f; // дамаг пули
     public float fireRate = 0.5f; // скорострельность
-    private float fireRate_check = 0f; // проверка для скорострельности
+    private float fireRateСheck = 0f; // проверка для скорострельности
     public readonly UnitType unitType = UnitType.Spec;
     public SpecType specType = SpecType.Assault;
     public Rigidbody2D SpecRb;
@@ -25,9 +25,9 @@ public class Spec : Unit
 
     void Update()
     {
-       if (fireRate_check < fireRate) // скорострельность
+       if (fireRateСheck < fireRate) // скорострельность
        {
-           fireRate_check += Time.deltaTime;
+            fireRateСheck += Time.deltaTime;
        }
        
        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, lookAtDeg), rotationSpeed * Time.deltaTime);
@@ -39,9 +39,9 @@ public class Spec : Unit
 
     private void Shoot()
     {
-        if (fireRate_check >= fireRate) // проверяем скорострельность
+        if (fireRateСheck >= fireRate) // проверяем скорострельность
         {
-            fireRate_check = 0f; // обнуляем скорострельность
+            fireRateСheck = 0f; // обнуляем скорострельность
             GameObject fire = Instantiate(firePrefab, firePointTransform.position, firePointTransform.rotation); // спавн эфекта выстрела и присвоение заспавненого эфекта переменной fire
             GameObject bullet = Instantiate(bulletPrefab, firePointTransform.position, firePointTransform.rotation); // спавн пули и присвоение заспавненной пули переменной bullet
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>(); // присваиваем переменной rb rigidbody2d заспавненной пули
