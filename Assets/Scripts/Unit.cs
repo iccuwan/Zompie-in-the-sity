@@ -35,6 +35,7 @@ public class Unit : MonoBehaviour
     {
         Idle,
         Walking,
-        Attacking
+        Attacking,
+        Reloading
     }
 }

@@ -51,7 +51,7 @@ public class Spec : Unit
                 float nearestDistance = 0f;
                 foreach (Zombie z in zombieList)
                 {
-                    float distance = Vector2.Distance(transform.position, z.gameObject.transform.position);
+                    float distance = Vector2.Distance(transform.position, z.transform.position);
                     if (nearest != null)
                     {
                         if (nearestDistance > distance)
