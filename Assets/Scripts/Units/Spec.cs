@@ -17,6 +17,8 @@ public class Spec : Unit
     public Rigidbody2D SpecRb;
 
     private float fireRateСheck = 0f; // проверка для скорострельности
+    private List<Zombie> zombieList = new List<Zombie>();
+    private Zombie target = null;
 
     void Awake()
     {
@@ -41,10 +43,42 @@ public class Spec : Unit
                 unitStatus = UnitStatus.Idle;
             }
         }
+        else
+        {
+            if (zombieList.Count > 0)
+            {
+                Zombie nearest = null;
+                float nearestDistance = 0f;
+                foreach (Zombie z in zombieList)
+                {
+                    float distance = Vector2.Distance(transform.position, z.gameObject.transform.position);
+                    if (nearest != null)
+                    {
+                        if (nearestDistance > distance)
+                        {
+                            nearest = z;
+                            nearestDistance = distance;
+                            continue;
+                        }
+                        continue;
+                    }
+                    nearest = z;
+                    nearestDistance = distance;
+                }
+                target = nearest;
+            }
+            if (target != null && unitStatus != UnitStatus.Walking)
+            {
+                Shoot(target);
+            }
+        }
     }
 
-    private void Shoot()
+    private void Shoot(Zombie z)
     {
+        Vector3 direction = z.gameObject.transform.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle); // Так правильней и логичней
         if (fireRateСheck >= fireRate) // проверяем скорострельность
         {
             fireRateСheck = 0f; // обнуляем скорострельность
@@ -57,17 +91,22 @@ public class Spec : Unit
         }
     }
 
-    void OnTriggerStay2D(Collider2D checkCol)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (checkCol.tag == "Zombie" && unitStatus != UnitStatus.Walking)
+        if (collision.tag == "Zombie")
         {
-            Shoot();
-            Vector3 direction = checkCol.gameObject.transform.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle); // Так правильней и логичней
+            zombieList.Add(collision.GetComponent<Zombie>());
         }
     }
-  
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Zombie")
+        {
+            zombieList.Remove(collision.GetComponent<Zombie>());
+        }
+    }
+
     public enum SpecType
     {
         Assault,
