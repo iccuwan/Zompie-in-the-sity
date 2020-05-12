@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Zombie : Unit
 {
-    // Start is called before the first frame update
+    private Transform target;
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Spec").GetComponent<Transform>();
+        if (Vector2.Distance(transform.position, target.position) < 10 && Vector2.Distance(transform.position, target.position) > 0.7)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        }
     }
 }
