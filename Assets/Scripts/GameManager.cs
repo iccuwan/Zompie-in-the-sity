@@ -25,4 +25,5 @@ public class GameManager
 
 
     public List<Spec> SpecList = new List<Spec>();
+    public List<Zombie> ZombieList = new List<Zombie>();
 }

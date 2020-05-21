@@ -13,7 +13,7 @@ public class Zombie : Unit
 
     void Start()
     {
-
+        GameManager.Instance.ZombieList.Add(this);
     }
 
     void Update()

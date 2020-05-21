@@ -17,7 +17,7 @@ public class Spec : Unit
     public Rigidbody2D SpecRb;
 
     private float fireRateСheck = 0f; // проверка для скорострельности
-    private List<Zombie> zombieList = new List<Zombie>();
+    private List<Zombie> targetList = new List<Zombie>();
     private Zombie target = null;
 
     void Awake()
@@ -45,11 +45,11 @@ public class Spec : Unit
         }
         else
         {
-            if (zombieList.Count > 0)
+            if (targetList.Count > 0)
             {
                 Zombie nearest = null;
                 float nearestDistance = 0f;
-                foreach (Zombie z in zombieList)
+                foreach (Zombie z in targetList)
                 {
                     float distance = Vector2.Distance(transform.position, z.transform.position);
                     if (nearest != null)
@@ -95,7 +95,7 @@ public class Spec : Unit
     {
         if (collision.tag == "Zombie")
         {
-            zombieList.Add(collision.GetComponent<Zombie>());
+            targetList.Add(collision.GetComponent<Zombie>());
         }
     }
 
@@ -103,7 +103,7 @@ public class Spec : Unit
     {
         if (collision.tag == "Zombie")
         {
-            zombieList.Remove(collision.GetComponent<Zombie>());
+            targetList.Remove(collision.GetComponent<Zombie>());
         }
     }
 
